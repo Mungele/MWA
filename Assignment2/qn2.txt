@@ -1,0 +1,24 @@
+1.) setImmediate and setTimeout are called at diffent 
+position in the event loop. if you have a callback method then the setImmediate
+will be called before setTimeout which will be the last to be called in the stack
+.If you do not have the callback method then the setTimeout will be called first.
+There for depending of where you are in the event loop one method can be prefered 
+than the other.
+
+2.) process.nextTick is a I/O event that is stored in the priority queue in the 
+I/O API, that is called with the highest priority . At any point in the event 
+loop if there is an event in the priority queue then it will be executed first.
+setImmediate is a I/O event that is placed in the event loop and is executed at
+check position if the loop.
+
+3.) buffer
+	v8
+	require
+	cluster
+	global
+	module
+	http/https
+	clearInterval
+	console
+	events
+	
