@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
             if(err) throw err;
             db.close();
             var secret = decipher.update(doc.message,'hex','utf8');
+            //console.log(secret);
             secret += decipher.final('utf8')
             console.log(secret);
             res.render('secret', {  message: secret });
