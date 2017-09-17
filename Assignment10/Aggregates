@@ -1,0 +1,62 @@
+ 1.) All Zip codes in Iowa State
+ db.homework8_2.aggregate([
+    {$match:{state:'IA'}},
+    {$group: {  _id:{'state':'$state'},
+                zipcode:{$addToSet:'$_id'}
+             }
+    }
+ ]);
+
+ db.homework8_2.aggregate([
+     {$match:{state:'IA'}},
+     {$group: {_id:'$state', zipcodes:{$addToSet:'$_id'}}},
+     {$project: {_id:0,state:'$_id',zipcodes:1}}]);
+
+ 2.) All Zip codes in with population less than 1000
+ db.homework8_2.aggregate([
+    {$match:{pop:{$lte:1000}}},
+    {$project: {_id:0,zipcodes:'$_id', pop:1}}]);
+
+db.homework8_2.aggregate([
+  {$match:{pop:{$lte:1000}}},
+  {$project: {_id:0,id:'temp',zipcode:'$_id', pop:1}},
+  {$group: {_id:'$id', zipcodes:{$addToSet:'$zipcode'}}},
+  {$project: {_id:0,zipcodes:1}}
+  ]);
+
+3.)
+
+db.homework8_2.aggregate([
+{$group:{
+        _id:{city:"$city",state:"$state"},
+        num_zip:{$sum:1}
+        }},
+{$match:{num_zip:{$gt:1}}},
+{$sort:{"_id.state":1,"_id.city":1}}
+]);
+
+
+4.) The least populated city in each state
+db.homework8_2.aggregate([
+{$group:{
+        _id:{state:"$state",city:"$city"},
+        population:{$sum:"$pop"}}},
+{$sort:{"_id.state":1,population:1}},
+{$group:{
+        _id:"$_id.state",
+        city:{$first:"$_id.city"},
+        population:{$first:"$population"}}}
+{$sort:{population:1}}
+]);
+
+5.) The greatest city in every state:
+ db.homework8_2.aggregate([
+ {$group:{
+        _id:{'state':'$state','city':'$city'},
+        population:{$sum:'$pop'}}},
+ {$sort:{'_id.state':1,'population':-1}},
+ {$group:{
+        _id:"$_id.state",
+        city:{$first:'$_id.city'},
+        population:{$first:'$population'}}},
+ {$sort:{population:-1}}]).pretty()
