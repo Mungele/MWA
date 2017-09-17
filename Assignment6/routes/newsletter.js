@@ -8,7 +8,7 @@ var fs = require('fs');
 /* GET newsletter page */
 router.get('/', function(req, res, next) {
 
-    res.render('newsletter',{csrftoken:req.csrfToken()});
+    res.render('newsletter',{csrftoken:res.locals.csrftoken});
     //res.send('respond with a resource');
 });
 
