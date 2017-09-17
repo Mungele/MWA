@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/search" method="post">
+      <label>Longitude</label><br/><input type = 'number' name="Longitude"/><br/>
+      <label>Latitude</label><br/><input type = 'number' name="Latitude"/><br/>
+      <input type="Submit" value="Search"></input>
+      <p><%= message %></p>
+    </form>
+  </body>
+</html>
