@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var baseObject = /** @class */ (function () {
+var baseObject = (function () {
     function baseObject(width, lenght) {
         if (width === void 0) { width = 0; }
         if (lenght === void 0) { lenght = 0; }
@@ -18,7 +18,7 @@ var baseObject = /** @class */ (function () {
     ;
     return baseObject;
 }());
-var rectangle = /** @class */ (function (_super) {
+var rectangle = (function (_super) {
     __extends(rectangle, _super);
     function rectangle(width, lenght) {
         return _super.call(this, width, lenght) || this;
