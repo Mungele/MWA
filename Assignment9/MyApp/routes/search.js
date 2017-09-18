@@ -17,9 +17,10 @@ router.post('/', function(req, res, next) {
         res.render('search', {title: 'Express',message: 'Fields not accepted'});
     } else {
         var hw8 = req.db.collection('homework8_1');
-        var find = hw8.find({});
-        find.sort([['Longitude',1],['Latitude',1]]);
-        find.limit(3);
+        var find =hw8.find({coordinates:{
+            $near: {
+                $geometry: {type: 'Point', coordinates: [req.body.Longitude, req.body.Latitude]},
+                $maxDistance:2000}}}).limit(3);
         find.each(
             function (err, data) {
                 if (err) throw err;
@@ -29,7 +30,7 @@ router.post('/', function(req, res, next) {
                 }
 
             }
-            );
+        );
 
     }
 

@@ -21,10 +21,11 @@ router.post('/', function(req, res, next) {
     } else{
         console.log("in result");
         const add = req.db.collection('homework8_1')
-            .save({'Name': req.body.Name, 'Category': req.body.Category, 'Longitude': req.body.Longitude, 'Latitude': req.body.Latitude},
+            .insert({'Name': req.body.Name, 'Category': req.body.Category, 'coordinates':[ req.body.Longitude, req.body.Latitude]},
                 function (err, data) {
                     console.log(data);
                 });
+        req.db.collection('homework8_1').createIndex({'coordinates':'2dsphere'})
         res.render('add', { title: 'Express',message: 'Data Added Successfully' });
     }
 

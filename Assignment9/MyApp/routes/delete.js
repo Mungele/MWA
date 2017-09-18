@@ -18,8 +18,9 @@ router.post('/', function(req, res, next) {
         console.log("in error");
         res.render('delete', {title: 'Express',message: 'All Fields are needed'});
     } else {
+        //removing by coordinates
         const del = req.db.collection('homework8_1')
-            .remove({'Name': req.body.Name, 'Category': req.body.Category, 'Longitude': req.body.Longitude, 'Latitude': req.body.Latitude},
+            .remove({'coordinates':{$all :[req.body.Longitude, req.body.Latitude]}},
                 function (err, removed) {
                     if (err) throw err;
                     else {
@@ -27,6 +28,26 @@ router.post('/', function(req, res, next) {
                         res.render('delete', {title: 'Express',message: 'removed successfully'});
                     }
                 });
+        //removing by name and category
+        /*const del = req.db.collection('homework8_1')
+            .remove({'Name': req.body.Name, 'Category': req.body.Category},
+                function (err, removed) {
+                    if (err) throw err;
+                    else {
+                        console.log("removed items" + removed);
+                        res.render('delete', {title: 'Express',message: 'removed successfully'});
+                    }
+                });*/
+        //removing by all fields
+        /*const del = req.db.collection('homework8_1')
+            .remove({'Name': req.body.Name, 'Category': req.body.Category, 'Longitude': req.body.Longitude, 'Latitude': req.body.Latitude},
+                function (err, removed) {
+                    if (err) throw err;
+                    else {
+                        console.log("removed items" + removed);
+                        res.render('delete', {title: 'Express',message: 'removed successfully'});
+                    }
+                });*/
         //res.render('delete', {title: 'Express'});
     }
 });

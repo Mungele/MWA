@@ -18,14 +18,13 @@ router.post('/', function(req, res, next) {
         console.log("in error");
         res.render('update', {title: 'Express',message: 'All Fields are needed'});
     } else {
+        //updating name and category by point
         const update = req.db.collection('homework8_1')
-            .update({'Name': req.body.Name},
-                {
+            .update({'coordinates': {$all :[ req.body.Longitude,req.body.Latitude]}},
+                {$set: {
                     'Name': req.body.Name,
-                    'Category': req.body.Category,
-                    'Longitude': req.body.Longitude,
-                    'Latitude': req.body.Latitude
-                },
+                    'Category': req.body.Category
+                }},
                 function (err, data) {
                     if (err) throw err;
                     else {
@@ -33,6 +32,21 @@ router.post('/', function(req, res, next) {
                         res.render('update', {title: 'Express', message: 'updated successfully'});
                     }
                 });
+        // update by name
+        /*const update = req.db.collection('homework8_1')
+            .update({'Name': req.body.Name},
+                {
+                    'Name': req.body.Name,
+                    'Category': req.body.Category,
+                    'coordinates': [req.body.Longitude ,req.body.Latitude]
+                },
+                function (err, data) {
+                    if (err) throw err;
+                    else {
+                        console.log("updated items" + data);
+                        res.render('update', {title: 'Express', message: 'updated successfully'});
+                    }
+                });*/
     }
 
     //res.render('update', { title: 'Express' });
