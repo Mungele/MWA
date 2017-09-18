@@ -1,4 +1,4 @@
-var Car = /** @class */ (function () {
+var Car = (function () {
     function Car(name) {
         this.name = name;
         this.acceleration = 0;
