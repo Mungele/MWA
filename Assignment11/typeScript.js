@@ -1,4 +1,4 @@
-var bankAccount = /** @class */ (function () {
+var bankAccount = (function () {
     function bankAccount() {
     }
     bankAccount.prototype.deposit = function (value) {
@@ -7,7 +7,7 @@ var bankAccount = /** @class */ (function () {
     return bankAccount;
 }());
 ;
-var myself = /** @class */ (function () {
+var myself = (function () {
     function myself() {
         this.name = "Asaad";
         this.bankAccount = new bankAccount;
