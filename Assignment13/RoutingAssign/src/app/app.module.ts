@@ -7,18 +7,20 @@ import { HomeComponent } from './home.component';
 import { StudentsComponent } from './students.component';
 import { DbService } from './db.service';
 import { StudentsinfoComponent } from './studentsinfo.component';
+import {MyguardGuard} from "./myguard.guard";
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     StudentsComponent,
     StudentsinfoComponent
+
   ],
   imports: [
     BrowserModule,
     myRoutes
   ],
-  providers: [DbService],
+  providers: [DbService,MyguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
