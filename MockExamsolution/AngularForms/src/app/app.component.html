@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!!
+  </h1>
+</div>
+<form [formGroup]="userForm" (ngSubmit)="submitForm()">
+  <div class="form-group">
+
+    <label class="center-block">Name:
+        <input class="form-control" name="name" [formControl]="userForm.controls['name']" />
+      </label> <br />
+
+    <div *ngIf="!userForm.controls['name'].valid" class="error">Required</div>
+
+    <label class="center-block">Email:
+        <input class="form-control" [formControl]="userForm.controls['email']" />
+      </label><br />
+    <div *ngIf="!userForm.controls['email'].valid" class="error">Must be Email</div>
+
+    <label class="center-block">Post:
+        <textarea class="form-control" [formControl]="userForm.controls['post']"></textarea>
+      </label><br />
+    <div *ngIf="!userForm.controls['post'].valid" class="error">Minimum length 10</div>
+
+
+    <div style="margin-bottom: 1em">
+      <button type="submit" [disabled]="!userForm.valid" class="btn btn-success">Submit</button> &nbsp;
+      <button type="button" class="btn btn-danger" (click)="getData()">Get Data</button>
+    </div>
+  </div>
+</form>
+
+<p>Form value: {{ userForm.value | json }}</p>
+<p>Form status: {{ userForm.status | json }}</p>-->
+
+
+<app-template-driven></app-template-driven>

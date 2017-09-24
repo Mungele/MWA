@@ -1,0 +1,34 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+</div>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="user">
+  <div>
+    <label>name</label><br/>
+    <input type="text"
+          name="name"
+          formControlName="name" >
+  </div>
+  <div *ngIf="!myForm.controls['user'].controls['name'].valid">Invalid Name</div>
+  <div>
+    <label>email</label><br/>
+    <input type="text"
+         name="email"
+         formControlName="email" >
+  </div>
+  <div *ngIf="!myForm.controls['user'].controls['email'].valid">Invalid Email</div>
+  <div>
+    <label>post</label><br/>
+    <textarea type="text"
+         name="post"
+              formControlName="post" ></textarea>
+  </div>
+  <div *ngIf="!myForm.controls['user'].controls['post'].valid">Invalid post</div>
+  <button type="submit" [disabled]="!myForm.valid">Submit</button>
+  <button  (click)="getData()" >Get Data</button>
+  </div>
+</form>
+
